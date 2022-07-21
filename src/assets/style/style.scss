@@ -1,0 +1,214 @@
+// da bi se koristio predprocesor CSS-a SASS bilo je potrebno
+// istalirati npm paket "node-sass"
+
+@import "mixins";
+
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
+
+$dark-color: #0845d3bf;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Kolom', cursive;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #a4a7ae;
+}
+h1 {
+  color: #a4a7ae;
+  font-weight: 300;
+  font-size: 45px;
+}
+.main {
+  @include flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(
+    circle,
+    rgb(37, 142, 239) 0%,
+    rgb(35, 3, 86) 100%
+  );
+}
+.main__container {
+  margin: 25px;
+  display: flex;
+  max-width: 1100px;
+  height: 70vh;
+  border-radius: 3px;
+  width: 100%;
+  background: rgb(56, 72, 87);
+  background: linear-gradient(
+    90deg,
+    rgb(96, 96, 245) 0%,
+    rgb(25, 21, 126) 100%
+  );
+  &--sidebar {
+    max-width: 250px;
+    width: 100%;
+    visibility: visible;
+    border-right: 1px solid $dark-color;
+    overflow: auto;
+    transition: width 1s;
+  }
+}
+.main__container--content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 25px;
+  padding-right: 0px;
+}
+.input__field--container {
+  margin-top: 25px;
+  flex-grow: 0;
+  display: flex;
+  padding-right: 25px;
+  .input__field--field {
+    flex-grow: 1;
+    background-color: $dark-color;
+    border: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    color: #a4a7ae;
+    padding: 10px;
+  }
+  .input__field--button {
+    background-color: $dark-color;
+    border: none;
+    padding: 10px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    .input__field--send-icon {
+      width: 22px;
+      opacity: 0.8;
+      transform: rotate(-25deg);
+    }
+  }
+}
+.messages {
+  flex-grow: 1;
+  overflow: auto;
+  padding-right: 25px;
+}
+// .main__container--sidebar {
+//   visibility: visible;
+//   border-right: 1px solid $dark-color;
+//   overflow: auto;
+// }
+.person {
+  border-bottom: 1px solid blueviolet;
+ padding: 5px;
+  list-style-type: none;
+}
+.person__in--chat {
+  display: flex;
+  align-items: flex-start;
+}
+.person__image {
+  margin-left: 5px;
+  border-radius: 50%;
+  padding: 5px;
+}
+.person__info {
+  margin-left: 5px;
+}
+.info__marks {
+  text-align: right;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.person__message {
+  padding: 10px;
+  background-color: $dark-color;
+  border-radius: 3px;
+  width: 80%;
+  float: left;
+  margin-top: 25px;
+  border-left: 3px solid;
+  .person__in--chat {
+    span {
+      order: -1;
+    }
+  }
+}
+.person__active {
+  padding: 10px;
+  border-left: 5px solid;
+}
+.my__message {
+  float: right;
+  margin-top: 25px;
+  padding: 10px;
+  list-style-type: none;
+  background-color: $dark-color;
+  border-radius: 3px;
+  width: 80%;
+  border-right: 3px solid;
+  .person__in--chat {
+    p {
+      flex-grow: 1;
+    }
+  }
+}
+.date-time {
+  padding: 0px 5px;
+}
+input,
+button {
+  &:focus {
+    outline: none;
+    box-shadow: 0px 4px 6px 0px rgba(40, 59, 61, 0.55);
+  }
+}
+.info {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.github {
+  width: 50px;
+  padding: 10px;
+}
+.info__about {
+  position: absolute;
+  bottom: 0;
+}
+.info__about--paragraph {
+  font-size: 13px;
+  margin-bottom: 10px;
+  a {
+    color: #a4a7ae;
+  }
+}
+
+//-----------scroll-------------------
+::-webkit-scrollbar {
+  height: 0px;
+  width: 4px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #bababa;
+  background-image: #f5f5f5;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .main__container--sidebar {
+    visibility: hidden;
+    width: 0%;
+  }
+}
